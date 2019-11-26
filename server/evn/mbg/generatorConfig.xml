@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+ <classPathEntry location="D:/workspace/mysql-connector-java-5.1.39-bin.jar" />  
+      
+ <context id="playerContext" targetRuntime="MyBatis3" defaultModelType="flat"> 
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/evn" driverClass="com.mysql.jdbc.Driver" password="123456" userId="root" />
+    <javaModelGenerator targetPackage="com.evn.game.db.po" targetProject="evn/src/main/java" />
+    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="evn/src/main/resources" />
+    <javaClientGenerator targetPackage="com.evn.game.db.dao" targetProject="evn/src/main/java" type="XMLMAPPER" />
+    
+    <table schema="game" tableName="player" 
+   		enableInsert="true" 
+    	enableCountByExample="true" 
+    	enableSelectByPrimaryKey="true" 
+    	enableSelectByExample="true" 
+    	enableUpdateByPrimaryKey="true" 
+    	enableUpdateByExample="true" 
+    	enableDeleteByPrimaryKey="true" 
+        enableDeleteByExample="true" >
+    </table>
+    <!--
+    <table schema="game" tableName="officer_prototype" 
+   		enableInsert="false" 
+    	enableCountByExample="true" 
+    	enableSelectByPrimaryKey="true" 
+    	enableSelectByExample="true" 
+    	enableUpdateByPrimaryKey="false" 
+    	enableUpdateByExample="false" 
+    	enableDeleteByPrimaryKey="false" 
+        enableDeleteByExample="false" >
+    </table>
+    
+ 
+    <table schema="game" tableName="prototype_template" 
+   		enableInsert="false" 
+    	enableCountByExample="true" 
+    	enableSelectByPrimaryKey="true" 
+    	enableSelectByExample="true" 
+    	enableUpdateByPrimaryKey="false" 
+    	enableUpdateByExample="false" 
+    	enableDeleteByPrimaryKey="false" 
+        enableDeleteByExample="false" >
+    </table>
+    
+ -->
+   </context>
+   
+    
+</generatorConfiguration>

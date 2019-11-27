@@ -15,19 +15,17 @@ export class Network {
 
     public connect(url: string) {
         Network.url = url;
+        this.receive();
     }
 
     public send(protocol: number, response: Response) {
         let msg = "";
-        console.log(response.getCmdId());
-        console.log(response.getParameter());
         for (let i = 0; i < response.getParameter().length; i++) {
             msg = msg + "&" + response.getParameter()[i];
         }
         console.log("发送消息为：" + Network.url + "?" + "protocol=" + response.getCmdId() + msg);
         Network.xhr.open('POST', Network.url + "?" + "protocol=" + response.getCmdId() + msg, true);
         Network.xhr.send();
-        this.receive();
     }
 
     private receive() {

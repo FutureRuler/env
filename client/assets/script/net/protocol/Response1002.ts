@@ -1,10 +1,10 @@
 import response  from "./Response";
 
-export default class Response1001 implements  response  {
+export default class Response1002 implements  response  {
     public  userId:string;
     public name:string;
     getCmdId(): number {
-        return 1001;
+        return 1002;
     }
 
     getParameter():string[]{
@@ -15,6 +15,6 @@ export default class Response1001 implements  response  {
     }
 
     getUrlParameter():string{
-        return "/player/1001";
+        return "/player/1002";
     }
 }

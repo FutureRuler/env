@@ -65,7 +65,7 @@
 	 	<property name="annotationClass" value="org.springframework.stereotype.Repository"/>  
 	 	<!-- 使用name值注入的方式，避免出现MapperScannerConfigurer和PropertyPlaceholderConfigurer冲突的问题 -->
     	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>  
-    	<property name="basePackage" value="com.xc.game.**.db.dao"/>  
+    	<property name="basePackage" value="com.evn.game.**.db.dao"/>  
 	</bean> 
       <!-- 事务管理 -->  
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  

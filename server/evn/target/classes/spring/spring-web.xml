@@ -36,10 +36,10 @@
 		</bean>
 		<mvc:interceptor>
 	    	<mvc:mapping path="/**"/>
-			<bean class="com.xc.game.web.aop.Interceptor"/>
+			<bean class="com.evn.game.web.aop.Interceptor"/>
 		</mvc:interceptor>
     </mvc:interceptors>
      <!-- 4.扫描web相关的bean -->
-     <context:component-scan base-package="com.xc.game.web" />
+     <context:component-scan base-package="com.evn.game.web" />
      
 </beans>

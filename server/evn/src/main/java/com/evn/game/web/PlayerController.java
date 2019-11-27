@@ -21,7 +21,7 @@ import com.evn.game.service.PlayerService;
  * @author ayue
  */
 @Controller
-@RequestMapping("/player")
+@RequestMapping("/cmd")
 public class PlayerController {
         private Logger logger = Logger.getLogger(this.getClass());
 
@@ -29,13 +29,14 @@ public class PlayerController {
         private PlayerService playerService;
 
         @ResponseBody
-        @RequestMapping(value = "/name", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+        @RequestMapping(value = "/cmdManager", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
         public String getPlayerName(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                String id = request.getParameter("id");
+                String id = request.getParameter("protocol");
                 // Player player = playerService.getPlayer(Long.valueOf(id));
+                System.out.println(id);
                 JSONObject nameJson = new JSONObject();
-                nameJson.put("name", "name");
-                return nameJson.toJSONString();
+                nameJson.put("playerId", "100100000000000001");
+                return "1001-" + nameJson.toJSONString();
         }
 
 }

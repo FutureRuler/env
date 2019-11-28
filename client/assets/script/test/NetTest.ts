@@ -44,7 +44,7 @@ export default class NewClass extends cc.Component {
         let response1002: Response1002 = new Response1002();
         response1002.userId=("aaaa");
         response1002.name=("aaaa");
-        cmdManager.executeResponse(response1002,this.exeResponse1001);
+        cmdManager.executeResponse(response1002,this.exeResponse1002);
     }
 
     exeResponse1002(request: Request) {

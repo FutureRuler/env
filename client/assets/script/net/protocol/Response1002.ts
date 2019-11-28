@@ -8,7 +8,7 @@ export default class Response1002 implements  response  {
     }
 
     getParameter():string[]{
-        let parameter:string[]=["",""];
+        let parameter:string[]=[];
         parameter[0] =  "userId="+this.userId;
         parameter[1] = "name="+this.name;
         return parameter;

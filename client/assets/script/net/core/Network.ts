@@ -15,14 +15,14 @@ export class Network {
         Network.url = url;
     }
 
-    public send(protocol: number, response: Response) {
+    public send( response: Response) {
         let msg = "";
         for (let i = 0; i < response.getParameter().length; i++) {
             msg = msg + "&" + response.getParameter()[i];
         }
-        console.log("发送消息为：" + Network.url + response.getUrlParameter() + "?" + "protocol=" + response.getCmdId() + msg);
+        console.log("发送消息为：" + Network.url + response.getUrlParameter() + "?"  + msg);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', Network.url + response.getUrlParameter() + "?" + "protocol=" + response.getCmdId() + msg, true);
+        xhr.open('POST', Network.url + response.getUrlParameter() + "?"  + msg, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {

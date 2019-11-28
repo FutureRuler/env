@@ -28,7 +28,7 @@ export class CmdManager {
         }
         let cmdObject: CmdObject = { callBack };
         this.m_events[protocol].push(cmdObject);
-        CNet.send(protocol, response);
+        CNet.send(response);
     }
 
     executeRequest(data: string) {

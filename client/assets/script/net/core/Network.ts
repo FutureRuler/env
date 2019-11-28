@@ -7,6 +7,8 @@ export class Network {
     // 单例
     private static _inst: Network;
     private static url: string;
+    private sentTime = 3;
+    private reConnectTimeInterval =2000;
     public static get inst() {
         return Network._inst || (Network._inst = new Network());
     }
@@ -26,8 +28,16 @@ export class Network {
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
+                CNet.sentTime = 3;
                 console.log("接收消息为" + this.responseText);
                 cmdManager.executeRequest(this.responseText);
+            }else{
+                if(CNet.sentTime>0){
+                    CNet.sentTime = CNet.sentTime-1;
+                    setTimeout(() => {
+                        CNet.send(response);
+                    }, CNet.reConnectTimeInterval);
+                }
             }
         };
     }

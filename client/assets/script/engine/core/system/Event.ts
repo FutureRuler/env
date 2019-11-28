@@ -1,7 +1,9 @@
+import Singleton from "../utils/Singleton";
+
 /*
  * @Author: fasthro
  * @Date: 2019-11-27 00:03:19
- * @Description: 事件
+ * @Description: 全局事件系统
  */
 
 export interface EventListener {
@@ -16,11 +18,9 @@ export interface EventDictionary {
     [key: string]: Array<EventListener>
 };
 
-export default class Event {
+export default class Event extends Singleton{
 
     private m_eventDic: EventDictionary;
-
-    constructor() { }
 
     public Once(eventName: string, handler: Function, target: Object = null) {
         this._add(eventName, handler, true, target);

@@ -1,4 +1,4 @@
-import { CNet } from "../engine/core/system/network/xmlHttpRequest/Manager"
+import { CManager } from "../engine/core/system/network/xmlHttpRequest/Manager"
 import Request from "../engine/core/system/network/xmlHttpRequest/protocol/Request";
 import Response from "../engine/core/system/network/xmlHttpRequest/protocol/Response";
 import Request1001 from "../engine/core/system/network/xmlHttpRequest/protocol/Request1001";
@@ -20,7 +20,7 @@ export default class NewClass extends cc.Component {
 
 
     start () {
-        CNet.connect("https://www.newayue.com/evn");
+        CManager.connect("https://www.newayue.com/evn");
         // CNet.connect("http://localhost:8080/evn");
         this.exeResponse1001();
         this.exeResponse1002();

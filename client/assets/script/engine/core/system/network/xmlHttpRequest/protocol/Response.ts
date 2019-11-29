@@ -1,4 +1,4 @@
-import { CNet } from "../Manager";
+import { CManager } from "../Manager";
 
 export default abstract class  Response  {
     abstract getCmdId():string;
@@ -10,6 +10,6 @@ export default abstract class  Response  {
     sentTime:number =3;
 
     send(){
-        CNet.send(this);
+        CManager.send(this);
     }
 }

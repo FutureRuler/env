@@ -18,7 +18,7 @@ export interface EventDictionary {
     [key: string]: Array<EventListener>
 };
 
-export default class Event extends Singleton{
+export class Event extends Singleton{
     private m_eventDic: EventDictionary={};
 
     public Once(eventName: string, handler: Function, target: Object = null) {

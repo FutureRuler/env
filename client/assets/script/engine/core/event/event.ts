@@ -1,9 +1,7 @@
-import Singleton from "../utils/Singleton";
-
 /*
  * @Author: fasthro
  * @Date: 2019-11-27 00:03:19
- * @Description: 全局事件系统
+ * @Description: 事件
  */
 
 export interface EventListener {
@@ -18,8 +16,11 @@ export interface EventDictionary {
     [key: string]: Array<EventListener>
 };
 
-export default class Event extends Singleton{
-    private m_eventDic: EventDictionary={};
+export default class Event {
+
+    private m_eventDic: EventDictionary;
+
+    constructor() { }
 
     public Once(eventName: string, handler: Function, target: Object = null) {
         this._add(eventName, handler, true, target);
@@ -85,13 +86,13 @@ export default class Event extends Singleton{
             if (event != null && event.eventName == eventName) {
                 if (target == null) {
                     event.data = data;
-                    if (event.handler != null) event.handler.call(event, data);
+                    if (event.handler != null) event.handler(event, data);
                     if (event.once) removes.push(event);
                 }
                 else {
                     if (target == event.target) {
                         event.data = data;
-                        if (event.handler != null) event.handler.call(event, data);
+                        if (event.handler != null) event.handler(event, data);
                         if (event.once) removes.push(event);
                     }
                 }
@@ -103,4 +104,3 @@ export default class Event extends Singleton{
         }
     }
 }
-export var EventManager = Event.getInstance();

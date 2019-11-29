@@ -1,17 +1,15 @@
-import { cmdManager } from "./CmdManager";
-import Response from "../protocol/Response";
+import Response from "./protocol/Response";
+import Singleton from "../../../utils/Singleton";
+import { EventManager } from "../../Event";
+
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export class Network {
+export class Network extends Singleton{
     // 单例
-    private static _inst: Network;
     private static url: string;
-    private sentTime = 3;
     private reConnectTimeInterval =2000;
-    public static get inst() {
-        return Network._inst || (Network._inst = new Network());
-    }
 
     public connect(url: string) {
         Network.url = url;
@@ -28,20 +26,24 @@ export class Network {
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
-                CNet.sentTime = 3;
                 console.log("接收消息为" + this.responseText);
-                cmdManager.executeRequest(this.responseText);
-            }else{
-                if(CNet.sentTime>0){
-                    CNet.sentTime = CNet.sentTime-1;
-                    setTimeout(() => {
-                        CNet.send(response);
-                    }, CNet.reConnectTimeInterval);
-                }
+                CNet.resquestManager(this.responseText);
+            }else if(xhr.readyState == 4&&response.sentTime>0){
+                console.log("失败重发"+response.sentTime)
+                response.sentTime = response.sentTime-1;
+                setTimeout(() => {
+                    CNet.send(response);
+                }, CNet.reConnectTimeInterval);
             }
         };
     }
 
-
+    resquestManager(data:string){
+        let splitted = data.split("-");
+        let cmdId = splitted[0];
+        let message = splitted[1];
+        let request: Request = JSON.parse(message);
+        EventManager.Broadcast(""+cmdId,request);
+    }
 }
-export var CNet = Network.inst;
+export var CNet = Network.getInstance();

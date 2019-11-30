@@ -1,12 +1,10 @@
-import response from "./Response";
+import response from "../../engine/core/system/network/xmlHttpRequest/AbstractResponse";
 
 export default class Response1002 extends response {
     public userId: string;
     public name: string;
 
-    getCmdId(): string {
-        return "1002";
-    }
+    cmd:string="1002";
 
     getParameter(): string[] {
         let parameter: string[] = [];

@@ -1,15 +1,15 @@
-import { CManager } from "../engine/core/system/network/xmlHttpRequest/Manager"
-import Request from "../engine/core/system/network/xmlHttpRequest/protocol/Request";
-import Response from "../engine/core/system/network/xmlHttpRequest/protocol/Response";
-import Request1001 from "../engine/core/system/network/xmlHttpRequest/protocol/Request1001";
-import Response1001 from "../engine/core/system/network/xmlHttpRequest/protocol/Response1001";
-import Request1002 from "../engine/core/system/network/xmlHttpRequest/protocol/Request1002";
-import Response1002 from "../engine/core/system/network/xmlHttpRequest/protocol/Response1002";
+import Request from "../engine/core/system/network/xmlHttpRequest/AbstractRequest";
+import Response from "../engine/core/system/network/xmlHttpRequest/AbstractResponse";
+import Request1001 from "../net/protocol/Request1001";
+import Response1001 from "../net/protocol/Response1001";
+import Request1002 from "../net/protocol/Request1002";
+import Response1002 from "../net/protocol/Response1002";
 import { EventManager } from "../engine/core/system/Event";
+import { XhrHandler } from "../engine/core/system/network/xmlHttpRequest/Handler";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class NetTest extends cc.Component {
 
     @property(cc.Label)
     label: cc.Label = null;
@@ -20,8 +20,8 @@ export default class NewClass extends cc.Component {
 
 
     start () {
-        CManager.connect("https://www.newayue.com/evn");
-        // CNet.connect("http://localhost:8080/evn");
+        XhrHandler.connect("https://www.newayue.com/evn");
+        // XhrHandler.connect("http://localhost:8080/evn");
         this.exeResponse1001();
         this.exeResponse1002();
     }
@@ -31,7 +31,7 @@ export default class NewClass extends cc.Component {
         let response1001: Response1001 = new Response1001();
         response1001.userId=("ssss");
         response1001.name=("sss");
-        EventManager.Once(response1001.getCmdId(),this.exeRequest1001);
+        EventManager.Once(response1001.cmd,this.exeRequest1001);
         response1001.send();
     }
 
@@ -45,7 +45,7 @@ export default class NewClass extends cc.Component {
         let response1002: Response1002 = new Response1002();
         response1002.userId=("aaaa");
         response1002.name=("aaaa");
-        EventManager.Once(response1002.getCmdId(),this.exeRequest1002);
+        EventManager.Once(response1002.cmd,this.exeRequest1002);
         response1002.send();
     }
 

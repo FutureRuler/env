@@ -18,7 +18,7 @@ export interface EventDictionary {
     [key: string]: Array<EventListener>
 };
 
-export class Event extends Singleton{
+export default class Event extends Singleton{
     private m_eventDic: EventDictionary={};
 
     public Once(eventName: string, handler: Function, target: Object = null) {
@@ -103,4 +103,3 @@ export class Event extends Singleton{
         }
     }
 }
-export var EventManager = Event.getInstance();

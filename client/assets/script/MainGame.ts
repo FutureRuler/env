@@ -1,5 +1,7 @@
-import UIManager from "./manager/UIManager";
-import MainController from "./ui/controller/MainController";
+
+import XHRPackFactory from './engine/core/network/xhr/XHRPackFactory';
+import XHRPack from "./engine/core/network/xhr/XHRPack";
+import XHR from './engine/core/network/xhr/XHR';
 
 /*
  * @Author: fasthro
@@ -12,8 +14,7 @@ const { ccclass, property } = cc._decorator;
 export default class MainGame extends cc.Component {
 
     start() {
-        let manager = new UIManager();
-        manager.ShowUI(MainController).Initialize();
+        
     }
 
     update(dt) {

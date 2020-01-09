@@ -34,7 +34,6 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-					
 		</plugins>
 </build>
 </profile>

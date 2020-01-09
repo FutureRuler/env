@@ -16,12 +16,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.evn.game.service.PlayerService;
 
 /**
- * 2019Äê11ÔÂ21ÈÕ
+ * 2020å¹´1æœˆ8æ—¥
  *
  * @author ayue
  */
 @Controller
-@RequestMapping("/cmd")
+@RequestMapping("/player")
 public class PlayerController {
         private Logger logger = Logger.getLogger(this.getClass());
 
@@ -29,14 +29,27 @@ public class PlayerController {
         private PlayerService playerService;
 
         @ResponseBody
-        @RequestMapping(value = "/cmdManager", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-        public String getPlayerName(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                String id = request.getParameter("protocol");
+        @RequestMapping(value = "/1001", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+        public String getPlayerName(HttpServletRequest request, HttpServletResponse response, String userId, String name) throws IOException {
                 // Player player = playerService.getPlayer(Long.valueOf(id));
-                System.out.println(id);
                 JSONObject nameJson = new JSONObject();
-                nameJson.put("playerId", "100100000000000001");
-                return "1001-" + nameJson.toJSONString();
+                System.out.println(userId);
+                System.out.println(name);
+                nameJson.put("cmd", "1001");
+                nameJson.put("playerId", "10000");
+                return nameJson.toJSONString();
+        }
+
+        @ResponseBody
+        @RequestMapping(value = "/1002", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+        public String getPlayerName2(HttpServletRequest request, HttpServletResponse response, String userId, String name) throws IOException {
+                // Player player = playerService.getPlayer(Long.valueOf(id));
+                JSONObject nameJson = new JSONObject();
+                System.out.println(userId);
+                System.out.println(name);
+                nameJson.put("cmd", "1002");
+                nameJson.put("playerId", "20000");
+                return nameJson.toJSONString();
         }
 
 }

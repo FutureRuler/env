@@ -168,26 +168,7 @@
  			<version>4.1.6</version>
 	</dependency>
 	<!-- util -->
-	<dependency>
- 			<groupId>com.rhea.wasteland</groupId>
- 			<artifactId>ws-util</artifactId>
-			<version>0.1</version>
-	</dependency>
-	<dependency>
- 			<groupId>com.rhea.wasteland</groupId>
- 			<artifactId>ws-net</artifactId>
-			<version>0.4</version>
-	</dependency>
-	<dependency>
- 			<groupId>com.rhea.wasteland</groupId>
- 			<artifactId>ws-game-protocol</artifactId>
-			<version>1.0.11</version>
-	</dependency>
-	<dependency>
-		<groupId>com.rhea.platform</groupId>
-  		<artifactId>rhea-platform-protocol</artifactId>
-		<version>0.0.5</version>
-	</dependency>
+	
 	<dependency>
 	  <groupId>net.logstash.log4j</groupId>
 	  <artifactId>jsonevent-layout</artifactId>
